@@ -1,0 +1,33 @@
+def factorial(number):
+    if number == 0:
+        return 1
+    else:
+        return number * factorial(number-1)
+
+
+def linear_search(arr, key):
+    if len(arr) == 0:
+        return -1
+    if arr[0] == key:
+        return 0
+    index = linear_search(arr[1:], key)
+    if index == -1:
+        return -1
+    else:
+        return index + 1
+
+
+def binary_search(arr, key):
+    def helper(start, end):
+        if start > end:
+            return -1
+
+        mid = (start + end) // 2
+        if arr[mid] == key:
+            return mid
+        elif arr[mid] > key:
+            return helper(start, mid - 1)
+        else:
+            return helper(mid + 1, end)
+
+    return helper(0, len(arr) - 1)
